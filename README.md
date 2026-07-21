@@ -1,6 +1,6 @@
-# MAGIC HAIR by Natali – interaktive Salon-Webseite
+# MAGIC HAIR by Natalie – interaktive Salon-Webseite
 
-Dies ist die erste eigenständige Konzeptversion für MAGIC HAIR by Natali. Kontaktdaten,
+Dies ist die erste eigenständige Konzeptversion für MAGIC HAIR by Natalie. Kontaktdaten,
 Bewertungen, Zertifikate und Social-Media-Vorschauen sind noch Platzhalter.
 
 ## Vorschau öffnen
