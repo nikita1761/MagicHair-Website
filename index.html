@@ -1,0 +1,507 @@
+<!doctype html>
+<html lang="de" class="no-js">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#17120f" />
+    <meta
+      name="description"
+      content="Konzeptvorschau für einen modernen, persönlichen Friseursalon mit scrollgesteuerter Salon-Reise."
+      data-i18n-content="meta.description"
+    />
+    <title data-i18n="meta.title">MAGIC HAIR — Salonkonzept</title>
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+    <link rel="preload" href="assets/images/hero-01-entrance.webp" as="image" type="image/webp" fetchpriority="high" />
+    <link rel="stylesheet" href="styles.css" />
+    <script>document.documentElement.classList.replace('no-js', 'js');</script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main" data-i18n="skip.content">Zum Inhalt springen</a>
+
+    <header class="site-header" id="siteHeader">
+      <a class="brand" href="#home" aria-label="MAGIC HAIR – Startseite" data-i18n-aria="brand.home">
+        <span class="brand-mark" aria-hidden="true">M</span>
+        <span class="brand-copy">
+          <strong>MAGIC HAIR</strong>
+          <small>By Natali</small>
+        </span>
+      </a>
+
+      <div class="header-actions">
+        <label class="language-control">
+          <span class="sr-only" data-i18n="language.label">Sprache auswählen</span>
+          <select id="languageSelect" aria-label="Sprache auswählen" data-i18n-aria="language.label">
+            <option value="de" lang="de">DE</option>
+            <option value="ru" lang="ru">RU</option>
+            <option value="en" lang="en">EN</option>
+          </select>
+        </label>
+
+        <button
+          class="menu-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="primaryNav"
+          aria-label="Menü öffnen"
+          data-i18n-aria="menu.open"
+        >
+          <span></span><span></span>
+        </button>
+      </div>
+
+      <nav class="primary-nav" id="primaryNav" aria-label="Hauptnavigation" data-i18n-aria="nav.label">
+        <a href="#about" data-i18n="nav.about">Über mich</a>
+        <a href="#gallery" data-i18n="nav.gallery">Galerie</a>
+        <a href="#certificates" data-i18n="nav.certificates">Zertifikate</a>
+        <a href="#voices" data-i18n="nav.voices">Stimmen</a>
+        <a href="#social" data-i18n="nav.social">Social</a>
+        <a class="nav-cta" href="#contact" data-i18n="nav.contact">Kontakt</a>
+      </nav>
+      <span class="sr-only" id="languageStatus" role="status" aria-live="polite"></span>
+    </header>
+
+    <main id="main">
+      <section class="hero" id="home" aria-labelledby="heroTitle" data-scroll-hero>
+        <div class="hero-sticky">
+          <div class="hero-media" aria-hidden="true">
+            <!-- Später kann hier das echte, scrollgesteuerte Salon-Video eingesetzt werden. -->
+            <video class="hero-video" id="heroVideo" muted playsinline preload="metadata"></video>
+            <img class="hero-frame is-active" src="assets/images/hero-01-entrance.webp" alt="" data-frame="0" />
+            <img class="hero-frame" src="assets/images/hero-02-inside.webp" alt="" data-frame="1" />
+            <img class="hero-frame" src="assets/images/hero-03-chair.webp" alt="" data-frame="2" />
+            <img class="hero-frame" src="assets/images/hero-04-cut.webp" alt="" data-frame="3" />
+            <img class="hero-frame" src="assets/images/hero-05-reveal.webp" alt="" data-frame="4" />
+            <div class="hero-vignette"></div>
+            <div class="film-grain"></div>
+          </div>
+
+          <div class="hero-content shell">
+            <div class="hero-copy is-active" data-hero-copy="0">
+              <p class="eyebrow eyebrow-light" data-i18n="hero.welcome">Willkommen im Salon</p>
+              <h1 id="heroTitle"><span data-i18n="hero.titleLead">Dein Moment</span><br /> <span data-i18n="hero.titleAccent">beginnt an der Tür.</span></h1>
+              <p class="hero-lead" data-i18n="hero.lead">Scrolle und begleite uns durch deinen Salonbesuch.</p>
+            </div>
+            <div class="hero-copy" data-hero-copy="1">
+              <p class="hero-kicker" data-i18n="hero.1.kicker">01 · Ankommen</p>
+              <h2><span data-i18n="hero.1.titleLead">Ein Raum,</span><br /> <span data-i18n="hero.1.titleAccent">der leiser wird.</span></h2>
+              <p data-i18n="hero.1.body">Raus aus dem Alltag. Rein in einen Ort, der ganz dir gehört.</p>
+            </div>
+            <div class="hero-copy" data-hero-copy="2">
+              <p class="hero-kicker" data-i18n="hero.2.kicker">02 · Platz nehmen</p>
+              <h2><span data-i18n="hero.2.titleLead">Zeit für ein</span><br /> <span data-i18n="hero.2.titleAccent">echtes Gespräch.</span></h2>
+              <p data-i18n="hero.2.body">Wir hören zu, bevor wir schneiden. Form, Farbe und Gefühl entstehen gemeinsam.</p>
+            </div>
+            <div class="hero-copy" data-hero-copy="3">
+              <p class="hero-kicker" data-i18n="hero.3.kicker">03 · Handwerk</p>
+              <h2><span data-i18n="hero.3.titleLead">Präzision,</span><br /> <span data-i18n="hero.3.titleAccent">die leicht aussieht.</span></h2>
+              <p data-i18n="hero.3.body">Ruhige Hände, klare Linien und ein Blick für das, was zu dir passt.</p>
+            </div>
+            <div class="hero-copy hero-copy-final" data-hero-copy="4">
+              <p class="hero-kicker" data-i18n="hero.4.kicker">04 · Du selbst</p>
+              <h2><span data-i18n="hero.4.titleLead">Nur ein bisschen</span><br /> <span data-i18n="hero.4.titleAccent">mehr du.</span></h2>
+              <p data-i18n="hero.4.body">Ein Look, der nicht verkleidet – sondern dich sichtbar macht.</p>
+              <a class="button button-light" href="#contact" data-i18n="hero.cta">Termin anfragen</a>
+            </div>
+          </div>
+
+          <div class="hero-progress" aria-hidden="true">
+            <span class="hero-progress-label" data-i18n="hero.progress">Salonreise</span>
+            <div class="hero-progress-track"><i></i></div>
+            <span class="hero-progress-count"><b>01</b> / 05</span>
+          </div>
+
+          <div class="scroll-cue" aria-hidden="true">
+            <span data-i18n="hero.scroll">Scroll</span>
+            <i></i>
+          </div>
+        </div>
+      </section>
+
+      <section class="manifesto section-pad" aria-label="Unser Anspruch" data-i18n-aria="manifesto.aria">
+        <div class="shell manifesto-grid reveal">
+          <p class="eyebrow" data-i18n="manifesto.eyebrow">Salonphilosophie</p>
+          <blockquote>
+            <span data-i18n="manifesto.quoteLead">„Schönes Haar beginnt nicht mit einer Schere. Es beginnt mit dem Gefühl,</span>
+            <em data-i18n="manifesto.quoteAccent">verstanden zu werden.“</em>
+          </blockquote>
+          <p class="manifesto-note" data-i18n="manifesto.note">Wir nehmen uns Zeit für dich. Denn die besten Ergebnisse entstehen, wenn wir zuhören, beraten und gemeinsam entscheiden.</p>
+        </div>
+      </section>
+
+      <section class="about section-pad" id="about" aria-labelledby="aboutTitle">
+        <div class="shell about-grid">
+          <figure class="portrait-wrap reveal">
+            <div class="portrait-number" aria-hidden="true">01</div>
+            <img
+              src="assets/images/portrait-stylist.webp"
+              alt="Fiktives Porträt von Natalie im Salon"
+              data-i18n-alt="about.portraitAlt"
+              loading="lazy"
+            />
+            <figcaption data-i18n="about.portraitCaption">Platzhalterporträt · wird später ersetzt</figcaption>
+          </figure>
+
+          <div class="about-copy reveal">
+            <p class="eyebrow" data-i18n="about.eyebrow">Über mich</p>
+            <h2 id="aboutTitle"><span data-i18n="about.titleLead">Mehr als ein Friseurtermin.</span><br /> <em data-i18n="about.titleAccent">Ein Ort zum Ankommen.</em></h2>
+            <p class="about-intro">
+              <span data-i18n="about.introHello">Hallo, ich bin</span> <strong>Natalie</strong><span data-i18n="about.introBody">. Ich wünsche mir, dass du meinen Salon mit einem guten Gefühl verlässt – nicht nur wegen deiner Haare, sondern weil du dich gesehen und verstanden fühlst. Genau dafür nehme ich mir Zeit.</span>
+            </p>
+            <p data-i18n="about.body">Ob klassischer Haarschnitt, moderne Farbtechniken oder Beauty-Anwendungen – ich liebe die Vielfalt meines Berufs und arbeite mit Sorgfalt, Erfahrung und viel Herz.</p>
+
+            <dl class="profile-facts">
+              <div><dt data-i18n="about.experience">Erfahrung</dt><dd id="experienceYears" data-base-year="2026" data-base-years="15">15+ Jahre</dd></div>
+              <div><dt data-i18n="about.focus">Schwerpunkte</dt><dd data-i18n="about.focusValue">Color · Cut · Care</dd></div>
+              <div><dt data-i18n="about.languages">Sprachen</dt><dd data-i18n="about.languagesValue">Deutsch · Russisch</dd></div>
+              <div><dt data-i18n="about.promise">Mein Versprechen</dt><dd data-i18n="about.promiseValue">Ehrliche Beratung</dd></div>
+            </dl>
+
+            <div class="signature" aria-label="Unterschrift Natali" data-i18n-aria="about.signature">Natali</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="expertise" aria-label="Leistungen" data-i18n-aria="expertise.aria">
+        <div class="expertise-track" aria-hidden="true">
+          <span data-i18n="expertise.consultation">Beratung</span><i>✦</i><span data-i18n="expertise.cut">Haarschnitt</span><i>✦</i><span data-i18n="expertise.balayage">Balayage</span><i>✦</i>
+          <span data-i18n="expertise.color">Coloration</span><i>✦</i><span data-i18n="expertise.styling">Styling</span><i>✦</i><span data-i18n="expertise.care">Pflege</span><i>✦</i>
+          <span data-i18n="expertise.consultation">Beratung</span><i>✦</i><span data-i18n="expertise.cut">Haarschnitt</span><i>✦</i><span data-i18n="expertise.balayage">Balayage</span><i>✦</i>
+          <span data-i18n="expertise.color">Coloration</span><i>✦</i><span data-i18n="expertise.styling">Styling</span><i>✦</i><span data-i18n="expertise.care">Pflege</span><i>✦</i>
+        </div>
+      </section>
+
+      <section class="gallery section-pad" id="gallery" aria-labelledby="galleryTitle">
+        <div class="shell">
+          <div class="section-head reveal">
+            <div>
+              <p class="eyebrow" data-i18n="gallery.eyebrow">Einblicke</p>
+              <h2 id="galleryTitle"><span data-i18n="gallery.titleLead">Unser Salon.</span><br /> <em data-i18n="gallery.titleAccent">Eure Geschichten.</em></h2>
+            </div>
+            <p data-i18n="gallery.description">Ein erster visueller Eindruck. Alle gezeigten Personen, Arbeiten und Räume sind noch Platzhalter für die spätere Originalgalerie.</p>
+          </div>
+
+          <div class="gallery-toolbar reveal" role="group" aria-label="Galerie filtern" data-i18n-aria="gallery.filterLabel">
+            <button class="filter-button is-active" type="button" data-filter="all" aria-pressed="true" data-i18n="gallery.filterAll">Alle</button>
+            <button class="filter-button" type="button" data-filter="salon" aria-pressed="false" data-i18n="gallery.filterSalon">Unser Salon</button>
+            <button class="filter-button" type="button" data-filter="clients" aria-pressed="false" data-i18n="gallery.filterClients">Unsere Kunden</button>
+            <button class="filter-button" type="button" data-filter="events" aria-pressed="false" data-i18n="gallery.filterEvents">Events</button>
+          </div>
+
+          <div class="gallery-grid" aria-live="polite">
+            <button class="gallery-card gallery-card-wide reveal" type="button" data-category="salon" data-image="assets/images/hero-02-inside.webp" data-caption="Blick durch den Salon" data-i18n-caption="gallery.1.caption" aria-label="Bild vergrößern: Blick durch den Salon" data-i18n-aria="gallery.1.open">
+              <img src="assets/images/hero-02-inside.webp" alt="Warmer, moderner Salon mit mehreren Stylingplätzen" data-i18n-alt="gallery.1.alt" loading="lazy" />
+              <span><b data-i18n="gallery.1.title">Der Salon</b><small data-i18n="gallery.filterSalon">Unser Salon</small></span>
+            </button>
+            <button class="gallery-card gallery-card-tall reveal" type="button" data-category="clients" data-image="assets/images/portrait-stylist.webp" data-caption="Zeit für persönliche Beratung" data-i18n-caption="gallery.2.caption" aria-label="Bild vergrößern: Persönliche Beratung" data-i18n-aria="gallery.2.open">
+              <img src="assets/images/portrait-stylist.webp" alt="Friseurin im warm beleuchteten Salon" data-i18n-alt="gallery.2.alt" loading="lazy" />
+              <span><b data-i18n="gallery.2.title">Persönlich</b><small data-i18n="gallery.filterClients">Unsere Kunden</small></span>
+            </button>
+            <button class="gallery-card reveal" type="button" data-category="salon" data-image="assets/images/hero-03-chair.webp" data-caption="Dein Platz im Salon" data-i18n-caption="gallery.3.caption" aria-label="Bild vergrößern: Dein Platz im Salon" data-i18n-aria="gallery.3.open">
+              <img src="assets/images/hero-03-chair.webp" alt="Schwarzer Friseurstuhl vor einem großen Spiegel" data-i18n-alt="gallery.3.alt" loading="lazy" />
+              <span><b data-i18n="gallery.3.title">Dein Platz</b><small data-i18n="gallery.filterSalon">Unser Salon</small></span>
+            </button>
+            <button class="gallery-card gallery-card-wide reveal" type="button" data-category="clients" data-image="assets/images/hero-04-cut.webp" data-caption="Präzision in jedem Schnitt" data-i18n-caption="gallery.4.caption" aria-label="Bild vergrößern: Präzision in jedem Schnitt" data-i18n-aria="gallery.4.open">
+              <img src="assets/images/hero-04-cut.webp" alt="Friseurin schneidet sorgfältig schulterlanges Haar" data-i18n-alt="gallery.4.alt" loading="lazy" />
+              <span><b data-i18n="gallery.4.title">Das Handwerk</b><small data-i18n="gallery.filterClients">Unsere Kunden</small></span>
+            </button>
+            <button class="gallery-card gallery-card-tall reveal" type="button" data-category="events" data-image="assets/images/gallery-event.webp" data-caption="Hair-Care-Abend im Salon" data-i18n-caption="gallery.5.caption" aria-label="Bild vergrößern: Hair-Care-Abend im Salon" data-i18n-aria="gallery.5.open">
+              <img src="assets/images/gallery-event.webp" alt="Kleine Gruppe bei einem fiktiven Haarpflege-Event im Salon" data-i18n-alt="gallery.5.alt" loading="lazy" />
+              <span><b data-i18n="gallery.5.title">Salonabend</b><small data-i18n="gallery.filterEvents">Events</small></span>
+            </button>
+            <button class="gallery-card reveal" type="button" data-category="salon" data-image="assets/images/hero-01-entrance.webp" data-caption="Willkommen bei MAGIC HAIR" data-i18n-caption="gallery.6.caption" aria-label="Bild vergrößern: Saloneingang" data-i18n-aria="gallery.6.open">
+              <img src="assets/images/hero-01-entrance.webp" alt="Einladender Eingang des fiktiven Salons" data-i18n-alt="gallery.6.alt" loading="lazy" />
+              <span><b data-i18n="gallery.6.title">Willkommen</b><small data-i18n="gallery.filterSalon">Unser Salon</small></span>
+            </button>
+            <button class="gallery-card gallery-card-wide reveal" type="button" data-category="clients" data-image="assets/images/hero-05-reveal.webp" data-caption="Der fertige Look" data-i18n-caption="gallery.7.caption" aria-label="Bild vergrößern: Der fertige Look" data-i18n-aria="gallery.7.open">
+              <img src="assets/images/hero-05-reveal.webp" alt="Kundin betrachtet ihren fertigen Haarschnitt im Spiegel" data-i18n-alt="gallery.7.alt" loading="lazy" />
+              <span><b data-i18n="gallery.7.title">Der Moment danach</b><small data-i18n="gallery.filterClients">Unsere Kunden</small></span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <dialog class="lightbox" id="galleryLightbox" aria-labelledby="lightboxCaption">
+        <button class="lightbox-close" type="button" aria-label="Bildansicht schließen" data-i18n-aria="gallery.lightboxClose">×</button>
+        <button class="lightbox-nav lightbox-prev" type="button" aria-label="Vorheriges Bild" data-i18n-aria="gallery.lightboxPrev">←</button>
+        <figure>
+          <img src="assets/images/hero-01-entrance.webp" alt="Galerievorschau" data-i18n-alt="gallery.previewAlt" />
+          <figcaption id="lightboxCaption"></figcaption>
+        </figure>
+        <button class="lightbox-nav lightbox-next" type="button" aria-label="Nächstes Bild" data-i18n-aria="gallery.lightboxNext">→</button>
+      </dialog>
+
+      <section class="certificates" id="certificates" aria-labelledby="certTitle" data-certificate-section>
+        <div class="certificate-sticky">
+          <div class="certificate-copy">
+            <p class="eyebrow eyebrow-light" data-i18n="cert.eyebrow">Weiterbildung</p>
+            <h2 id="certTitle"><span data-i18n="cert.titleLead">Wissen, das</span><br /> <em data-i18n="cert.titleAccent">in Bewegung bleibt.</em></h2>
+            <p data-i18n="cert.description">Regelmäßige Weiterbildung gehört zu gutem Handwerk. Scrolle, um die fiktiven Beispielzertifikate zu entdecken.</p>
+            <div class="certificate-controls">
+              <button type="button" data-cert-prev aria-label="Vorheriges Zertifikat" data-i18n-aria="cert.prev">←</button>
+              <span><b data-cert-current>01</b> / 06</span>
+              <button type="button" data-cert-next aria-label="Nächstes Zertifikat" data-i18n-aria="cert.next">→</button>
+            </div>
+          </div>
+
+          <div class="certificate-orbit" aria-label="Zertifikatsübersicht" data-i18n-aria="cert.overview">
+            <div class="orbit-line orbit-line-one" aria-hidden="true"></div>
+            <div class="orbit-line orbit-line-two" aria-hidden="true"></div>
+
+            <article class="certificate-card" data-cert="0">
+              <span class="cert-seal" aria-hidden="true">MH</span>
+              <small data-i18n="cert.1.type">Masterclass · 2025</small>
+              <h3 data-i18n="cert.1.title">Creative Color</h3>
+              <p data-i18n="cert.1.description">Moderne Farbtechniken &amp; harmonische Nuancen</p>
+              <b data-i18n="cert.1.level">Advanced</b>
+            </article>
+            <article class="certificate-card" data-cert="1">
+              <span class="cert-seal" aria-hidden="true">MH</span>
+              <small data-i18n="cert.2.type">Academy · 2024</small>
+              <h3 data-i18n="cert.2.title">Precision Cut</h3>
+              <p data-i18n="cert.2.description">Geometrie, Bewegung &amp; tragbare Formen</p>
+              <b data-i18n="cert.2.level">Diploma</b>
+            </article>
+            <article class="certificate-card" data-cert="2">
+              <span class="cert-seal" aria-hidden="true">MH</span>
+              <small data-i18n="cert.3.type">Seminar · 2024</small>
+              <h3 data-i18n="cert.3.title">Scalp &amp; Care</h3>
+              <p data-i18n="cert.3.description">Kopfhautgesundheit &amp; individuelle Pflege</p>
+              <b data-i18n="cert.3.level">Certified</b>
+            </article>
+            <article class="certificate-card" data-cert="3">
+              <span class="cert-seal" aria-hidden="true">MH</span>
+              <small data-i18n="cert.4.type">Workshop · 2023</small>
+              <h3 data-i18n="cert.4.title">Balayage Art</h3>
+              <p data-i18n="cert.4.description">Freihandtechniken &amp; weiche Übergänge</p>
+              <b data-i18n="cert.4.level">Expert</b>
+            </article>
+            <article class="certificate-card" data-cert="4">
+              <span class="cert-seal" aria-hidden="true">MH</span>
+              <small data-i18n="cert.5.type">Training · 2023</small>
+              <h3 data-i18n="cert.5.title">Curly Method</h3>
+              <p data-i18n="cert.5.description">Schnitt &amp; Pflege für natürliche Locken</p>
+              <b data-i18n="cert.5.level">Specialist</b>
+            </article>
+            <article class="certificate-card" data-cert="5">
+              <span class="cert-seal" aria-hidden="true">MH</span>
+              <small data-i18n="cert.6.type">Business · 2022</small>
+              <h3 data-i18n="cert.6.title">Master Stylist</h3>
+              <p data-i18n="cert.6.description">Beratung, Formgefühl &amp; Salonhandwerk</p>
+              <b data-i18n="cert.6.level">Master</b>
+            </article>
+          </div>
+
+          <p class="certificate-disclaimer" data-i18n="cert.disclaimer">Beispielzertifikate · Originale folgen später</p>
+        </div>
+      </section>
+
+      <section class="voices section-pad" id="voices" aria-labelledby="voicesTitle">
+        <div class="shell">
+          <div class="section-head section-head-voices reveal">
+            <div>
+              <p class="eyebrow" data-i18n="voices.eyebrow">Stimmen</p>
+              <h2 id="voicesTitle"><span data-i18n="voices.titleLead">Echte Worte.</span><br /><em data-i18n="voices.titleAccent">Echte Erlebnisse</em></h2>
+            </div>
+            <div class="testimonial-controls">
+              <button type="button" data-testimonial-prev aria-label="Vorherige Bewertung" data-i18n-aria="voices.prev">←</button>
+              <button type="button" data-testimonial-next aria-label="Nächste Bewertung" data-i18n-aria="voices.next">→</button>
+            </div>
+          </div>
+
+          <div class="testimonial-stage reveal" aria-live="polite">
+            <article class="testimonial is-active" data-testimonial="0">
+              <div class="stars" aria-label="5 von 5 Sternen" data-i18n-aria="voices.rating">★★★★★</div>
+              <blockquote data-i18n="voices.1.quote">„Zum ersten Mal hatte ich nicht das Gefühl, erklären zu müssen, wer ich sein möchte. Natalie hat zugehört – und genau das sieht man im Ergebnis.“</blockquote>
+              <p><strong>Leonie K.</strong><span data-i18n="voices.1.service">Cut &amp; Styling · Beispielbewertung</span></p>
+            </article>
+            <article class="testimonial" data-testimonial="1">
+              <div class="stars" aria-label="5 von 5 Sternen" data-i18n-aria="voices.rating">★★★★★</div>
+              <blockquote data-i18n="voices.2.quote">„Meine Farbe wirkt lebendig, aber vollkommen natürlich. Selbst Wochen später werde ich noch darauf angesprochen.“</blockquote>
+              <p><strong>Sarah M.</strong><span data-i18n="voices.2.service">Balayage · Beispielbewertung</span></p>
+            </article>
+            <article class="testimonial" data-testimonial="2">
+              <div class="stars" aria-label="5 von 5 Sternen" data-i18n-aria="voices.rating">★★★★★</div>
+              <blockquote data-i18n="voices.3.quote">„Ruhige Atmosphäre, ehrliche Empfehlung und ein Schnitt, den ich morgens wirklich selbst hinbekomme. Genau so sollte ein Salonbesuch sein.“</blockquote>
+              <p><strong>Jana R.</strong><span data-i18n="voices.3.service">Beratung &amp; Cut · Beispielbewertung</span></p>
+            </article>
+            <article class="testimonial" data-testimonial="3">
+              <div class="stars" aria-label="5 von 5 Sternen" data-i18n-aria="voices.rating">★★★★★</div>
+              <blockquote data-i18n="voices.4.quote">„Ich kam mit einer Idee und ging mit einem Look, der viel besser zu mir passt. Kompetent, herzlich und ganz ohne Hektik.“</blockquote>
+              <p><strong>Nora F.</strong><span data-i18n="voices.4.service">Color &amp; Care · Beispielbewertung</span></p>
+            </article>
+          </div>
+
+          <div class="testimonial-dots" role="group" aria-label="Bewertung auswählen" data-i18n-aria="voices.select">
+            <button class="is-active" type="button" data-testimonial-dot="0" aria-label="Bewertung 1" data-i18n-aria="voices.dot1" aria-pressed="true"></button>
+            <button type="button" data-testimonial-dot="1" aria-label="Bewertung 2" data-i18n-aria="voices.dot2" aria-pressed="false"></button>
+            <button type="button" data-testimonial-dot="2" aria-label="Bewertung 3" data-i18n-aria="voices.dot3" aria-pressed="false"></button>
+            <button type="button" data-testimonial-dot="3" aria-label="Bewertung 4" data-i18n-aria="voices.dot4" aria-pressed="false"></button>
+          </div>
+        </div>
+      </section>
+
+      <section class="social section-pad" id="social" aria-labelledby="socialTitle">
+        <div class="shell">
+          <div class="section-head reveal">
+            <div>
+              <p class="eyebrow" data-i18n="social.eyebrow">Folge dem Salon</p>
+              <h2 id="socialTitle"><span data-i18n="social.titleLead">Mehr Looks.</span><br /><em data-i18n="social.titleAccent">Mehr Einblicke.</em></h2>
+            </div>
+            <p data-i18n="social.description">
+              Die Vorschauen sind im Entwurf noch statisch. Später können sie mit den echten
+              Profilen und aktuellen Beiträgen verbunden werden.
+            </p>
+          </div>
+
+          <div class="social-grid">
+            <a class="social-card social-instagram reveal" href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram öffnen – Demo-Link" data-i18n-aria="social.instagramOpen">
+              <div class="social-preview">
+                <img src="assets/images/hero-05-reveal.webp" alt="Vorschau eines fiktiven Instagram-Beitrags" data-i18n-alt="social.instagramAlt" loading="lazy" />
+                <span class="demo-pill" data-i18n="social.demoPreview">Demo-Vorschau</span>
+              </div>
+              <div class="social-meta">
+                <span class="social-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="1"></circle></svg>
+                </span>
+                <span><b>Instagram</b><small data-i18n="social.demoProfile">Demo-Profil</small></span>
+                <i aria-hidden="true">↗</i>
+              </div>
+            </a>
+
+            <a class="social-card social-tiktok reveal" href="https://www.tiktok.com/" target="_blank" rel="noopener noreferrer" aria-label="TikTok öffnen – Demo-Link" data-i18n-aria="social.tiktokOpen">
+              <div class="social-preview">
+                <img src="assets/images/hero-04-cut.webp" alt="Vorschau eines fiktiven TikTok-Beitrags" data-i18n-alt="social.tiktokAlt" loading="lazy" />
+                <span class="demo-pill" data-i18n="social.demoPreview">Demo-Vorschau</span>
+                <span class="play-mark" aria-hidden="true">▶</span>
+              </div>
+              <div class="social-meta">
+                <span class="social-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><path d="M14 4v10.2a4.2 4.2 0 1 1-3.6-4.15"></path><path d="M14 4c.6 2.6 2.1 4 5 4.3"></path></svg>
+                </span>
+                <span><b>TikTok</b><small data-i18n="social.demoProfile">Demo-Profil</small></span>
+                <i aria-hidden="true">↗</i>
+              </div>
+            </a>
+
+            <a class="social-card social-facebook reveal" href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" aria-label="Facebook öffnen – Demo-Link" data-i18n-aria="social.facebookOpen">
+              <div class="social-preview">
+                <img src="assets/images/gallery-event.webp" alt="Vorschau eines fiktiven Facebook-Beitrags" data-i18n-alt="social.facebookAlt" loading="lazy" />
+                <span class="demo-pill" data-i18n="social.demoPreview">Demo-Vorschau</span>
+              </div>
+              <div class="social-meta">
+                <span class="social-icon social-icon-facebook" aria-hidden="true">f</span>
+                <span><b>Facebook</b><small>MAGIC HAIR</small></span>
+                <i aria-hidden="true">↗</i>
+              </div>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section class="contact section-pad" id="contact" aria-labelledby="contactTitle">
+        <div class="shell contact-grid">
+          <div class="contact-intro reveal">
+            <p class="eyebrow eyebrow-light" data-i18n="contact.eyebrow">Kontakt</p>
+            <h2 id="contactTitle"><span data-i18n="contact.titleLead">Lust auf</span><br /><em data-i18n="contact.titleAccent">Veränderung?</em></h2>
+            <p data-i18n="contact.intro">
+              Erzähl mir kurz, was du dir wünschst. Ich melde mich persönlich bei dir zurück.
+            </p>
+
+            <div class="contact-details">
+              <a href="tel:+490000000000"><small data-i18n="contact.phone">Telefon</small><strong>+49 (0) 000 000000</strong></a>
+              <a href="mailto:hallo@example-salon.de"><small data-i18n="contact.email">E-Mail</small><strong>hallo@example-salon.de</strong></a>
+              <p><small data-i18n="contact.address">Adresse</small><strong>Musterstraße 12 · 00000 Musterstadt</strong></p>
+            </div>
+
+            <div class="opening-hours">
+              <span><b data-i18n="hours.tueFri">Di – Fr</b><em>09:00 – 18:00</em></span>
+              <span><b data-i18n="hours.saturday">Samstag</b><em>09:00 – 14:00</em></span>
+              <span><b data-i18n="hours.sunMon">So &amp; Mo</b><em data-i18n="hours.closed">Geschlossen</em></span>
+            </div>
+          </div>
+
+          <form class="contact-form reveal" id="contactForm" novalidate>
+            <div class="form-note">
+              <span data-i18n="form.noteLabel">Konzeptvorschau</span>
+              <p data-i18n="form.note">Das Formular prüft Eingaben, versendet aber noch keine Nachricht.</p>
+            </div>
+
+            <div class="field-row">
+              <label class="field">
+                <span data-i18n="form.name">Name *</span>
+                <input type="text" name="name" autocomplete="name" required />
+                <small class="field-error"></small>
+              </label>
+              <label class="field">
+                <span data-i18n="form.email">E-Mail *</span>
+                <input type="email" name="email" autocomplete="email" required />
+                <small class="field-error"></small>
+              </label>
+            </div>
+
+            <label class="field">
+              <span data-i18n="form.phone">Telefonnummer</span>
+              <input type="tel" name="phone" autocomplete="tel" inputmode="tel" />
+              <small class="field-error"></small>
+            </label>
+
+            <label class="field">
+              <span data-i18n="form.subject">Worum geht es?</span>
+              <select name="subject">
+                <option value="" data-i18n="form.select">Bitte auswählen</option>
+                <option value="cut" data-i18n="form.subjectCut">Haarschnitt &amp; Styling</option>
+                <option value="color" data-i18n="form.subjectColor">Farbe &amp; Balayage</option>
+                <option value="care" data-i18n="form.subjectCare">Pflegeberatung</option>
+                <option value="event" data-i18n="form.subjectEvent">Event &amp; Styling</option>
+                <option value="other" data-i18n="form.subjectOther">Etwas anderes</option>
+              </select>
+            </label>
+
+            <label class="field">
+              <span data-i18n="form.messageOptional">Deine Nachricht (optional)</span>
+              <textarea name="message" rows="5"></textarea>
+              <small class="field-error"></small>
+            </label>
+
+            <fieldset class="contact-method">
+              <legend data-i18n="form.methodLegend">Wie darf ich mich melden?</legend>
+              <label><input type="radio" name="method" value="email" checked /><span data-i18n="form.methodEmail">E-Mail</span></label>
+              <label><input type="radio" name="method" value="phone" /><span data-i18n="form.methodPhone">Telefon</span></label>
+              <label><input type="radio" name="method" value="whatsapp" /><span>WhatsApp</span></label>
+            </fieldset>
+
+            <label class="consent">
+              <input type="checkbox" name="consent" required />
+              <span data-i18n="form.consent">Ich stimme zu, dass meine Angaben zur Bearbeitung meiner Anfrage verwendet werden. *</span>
+            </label>
+            <small class="consent-error field-error"></small>
+
+            <button class="button button-dark submit-button" type="submit">
+              <span data-i18n="form.submit">Anfrage vorbereiten</span><i aria-hidden="true">↗</i>
+            </button>
+            <p class="form-status" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="shell footer-top">
+        <a class="brand brand-footer" href="#home" aria-label="MAGIC HAIR – nach oben" data-i18n-aria="footer.brandTop">
+          <span class="brand-mark" aria-hidden="true">M</span>
+          <span class="brand-copy"><strong>MAGIC HAIR</strong><small>By Natali</small></span>
+        </a>
+        <p><span data-i18n="footer.taglineLead">Persönliches Handwerk.</span><br /><span data-i18n="footer.taglineAccent">Ruhige Momente. Echtes Du.</span></p>
+        <a class="back-to-top" href="#home"><span data-i18n="footer.backTop">Nach oben</span> <span aria-hidden="true">↑</span></a>
+      </div>
+      <div class="shell footer-bottom">
+        <span>© <span id="currentYear"></span> MAGIC HAIR · <span data-i18n="footer.concept">Konzeptvorschau</span></span>
+        <nav aria-label="Rechtliches" data-i18n-aria="footer.legalLabel"><a href="#" data-i18n="footer.imprint">Impressum</a><a href="#" data-i18n="footer.privacy">Datenschutz</a></nav>
+        <span data-i18n="footer.placeholderNote">Bilder, Kontaktdaten, Bewertungen und Zertifikate sind noch Platzhalter.</span>
+      </div>
+    </footer>
+
+    <script src="i18n.js" defer></script>
+    <script src="app.js" defer></script>
+  </body>
+</html>
