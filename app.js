@@ -16,14 +16,62 @@
   const menuToggle = document.querySelector(".menu-toggle");
   const primaryNav = document.querySelector("#primaryNav");
   const navLinks = [...document.querySelectorAll('.primary-nav a[href^="#"]')];
-  const languageSelect = document.querySelector("#languageSelect");
+  const languageControl = document.querySelector(".language-control");
+  const languageTrigger = document.querySelector("[data-language-trigger]");
+  const languageMenu = document.querySelector("#languageMenu");
+  const languageCurrent = document.querySelector("[data-language-current]");
+  const languageOptions = [...document.querySelectorAll("[data-language-option]")];
   const languageStatus = document.querySelector("#languageStatus");
+  const languageNames = { de: "Deutsch", ru: "Русский", en: "English" };
+  let languageMenuCloseTimer;
 
   const updateMenuLabel = () => {
     if (!menuToggle) return;
     const isOpen = menuToggle.getAttribute("aria-expanded") === "true";
     menuToggle.setAttribute("aria-label", t(isOpen ? "menu.close" : "menu.open"));
   };
+
+  const focusLanguageOption = (index) => {
+    if (!languageOptions.length) return;
+    const targetIndex = (index + languageOptions.length) % languageOptions.length;
+    languageOptions.forEach((option, optionIndex) => {
+      option.tabIndex = optionIndex === targetIndex ? 0 : -1;
+    });
+    languageOptions[targetIndex]?.focus();
+  };
+
+  const setLanguageMenuOpen = (shouldOpen, focusTarget = "") => {
+    if (!languageControl || !languageTrigger || !languageMenu) return;
+    window.clearTimeout(languageMenuCloseTimer);
+    languageTrigger.setAttribute("aria-expanded", String(shouldOpen));
+    languageControl.classList.toggle("is-open", shouldOpen);
+
+    if (shouldOpen) {
+      languageMenu.hidden = false;
+      window.requestAnimationFrame(() => {
+        if (languageTrigger.getAttribute("aria-expanded") !== "true") return;
+        languageMenu.classList.add("is-open");
+        if (!focusTarget) return;
+        const currentIndex = Math.max(0, languageOptions.findIndex((option) => option.classList.contains("is-active")));
+        const targetIndex = focusTarget === "first"
+          ? 0
+          : focusTarget === "last"
+            ? languageOptions.length - 1
+            : currentIndex;
+        focusLanguageOption(targetIndex);
+      });
+      return;
+    }
+
+    languageMenu.classList.remove("is-open");
+    const finishClose = () => {
+      if (languageTrigger.getAttribute("aria-expanded") === "false") languageMenu.hidden = true;
+    };
+    if (reduceMotion.matches) finishClose();
+    else languageMenuCloseTimer = window.setTimeout(finishClose, 320);
+  };
+
+  const closeLanguageMenu = () => setLanguageMenuOpen(false);
 
   const closeMenu = () => {
     if (!menuToggle || !primaryNav) return;
@@ -36,6 +84,7 @@
 
   menuToggle?.addEventListener("click", () => {
     const shouldOpen = menuToggle.getAttribute("aria-expanded") !== "true";
+    if (shouldOpen) closeLanguageMenu();
     menuToggle.setAttribute("aria-expanded", String(shouldOpen));
     updateMenuLabel();
     primaryNav?.classList.toggle("is-open", shouldOpen);
@@ -45,7 +94,12 @@
 
   navLinks.forEach((link) => link.addEventListener("click", closeMenu));
   window.addEventListener("keydown", (event) => {
-    if (event.key === "Escape") closeMenu();
+    if (event.key === "Escape") {
+      closeMenu();
+      const languageWasOpen = languageTrigger?.getAttribute("aria-expanded") === "true";
+      closeLanguageMenu();
+      if (languageWasOpen && languageControl?.contains(document.activeElement)) languageTrigger?.focus();
+    }
   });
 
   /* Scroll-driven hero: image sequence now, real video later */
@@ -319,12 +373,17 @@
   certificatePrev?.addEventListener("click", () => scrollToCertificate(currentCertificate - 1));
   certificateNext?.addEventListener("click", () => scrollToCertificate(currentCertificate + 1));
 
-  /* Manual testimonial slider */
+  /* Automatic testimonial slider with considerate pause states */
   const testimonials = [...document.querySelectorAll("[data-testimonial]")];
   const testimonialDots = [...document.querySelectorAll("[data-testimonial-dot]")];
   const testimonialPrev = document.querySelector("[data-testimonial-prev]");
   const testimonialNext = document.querySelector("[data-testimonial-next]");
+  const testimonialRegion = document.querySelector("#voices");
+  const testimonialAutoplayDelay = 4000;
   let testimonialIndex = 0;
+  let testimonialTimer;
+  let testimonialIsVisible = false;
+  let testimonialIsPaused = false;
 
   const showTestimonial = (index) => {
     if (!testimonials.length) return;
@@ -341,11 +400,65 @@
     });
   };
 
-  testimonialPrev?.addEventListener("click", () => showTestimonial(testimonialIndex - 1));
-  testimonialNext?.addEventListener("click", () => showTestimonial(testimonialIndex + 1));
+  const stopTestimonialAutoplay = () => {
+    window.clearTimeout(testimonialTimer);
+    testimonialTimer = undefined;
+  };
+
+  const scheduleTestimonialAutoplay = () => {
+    stopTestimonialAutoplay();
+    if (
+      testimonials.length < 2 ||
+      !testimonialIsVisible ||
+      testimonialIsPaused ||
+      document.hidden ||
+      reduceMotion.matches
+    ) return;
+
+    testimonialTimer = window.setTimeout(() => {
+      showTestimonial(testimonialIndex + 1);
+      scheduleTestimonialAutoplay();
+    }, testimonialAutoplayDelay);
+  };
+
+  const selectTestimonial = (index) => {
+    showTestimonial(index);
+    scheduleTestimonialAutoplay();
+  };
+
+  testimonialPrev?.addEventListener("click", () => selectTestimonial(testimonialIndex - 1));
+  testimonialNext?.addEventListener("click", () => selectTestimonial(testimonialIndex + 1));
   testimonialDots.forEach((dot) => {
-    dot.addEventListener("click", () => showTestimonial(Number(dot.dataset.testimonialDot)));
+    dot.addEventListener("click", () => selectTestimonial(Number(dot.dataset.testimonialDot)));
   });
+
+  testimonialRegion?.addEventListener("focusin", () => {
+    testimonialIsPaused = true;
+    stopTestimonialAutoplay();
+  });
+  testimonialRegion?.addEventListener("focusout", () => {
+    window.requestAnimationFrame(() => {
+      testimonialIsPaused = testimonialRegion.contains(document.activeElement);
+      scheduleTestimonialAutoplay();
+    });
+  });
+
+  if (testimonialRegion && "IntersectionObserver" in window) {
+    const testimonialObserver = new IntersectionObserver(
+      ([entry]) => {
+        testimonialIsVisible = entry.isIntersecting;
+        scheduleTestimonialAutoplay();
+      },
+      { threshold: 0.35 }
+    );
+    testimonialObserver.observe(testimonialRegion);
+  } else {
+    testimonialIsVisible = true;
+    scheduleTestimonialAutoplay();
+  }
+
+  document.addEventListener("visibilitychange", scheduleTestimonialAutoplay);
+  reduceMotion.addEventListener?.("change", scheduleTestimonialAutoplay);
 
   /* Demo contact form validation */
   const contactForm = document.querySelector("#contactForm");
@@ -456,21 +569,80 @@
     }
   };
 
-  languageSelect?.addEventListener("change", () => {
-    i18n?.setLanguage?.(languageSelect.value);
-    if (languageStatus) languageStatus.textContent = t("language.changed");
-    closeMenu();
+  languageTrigger?.addEventListener("click", () => {
+    const shouldOpen = languageTrigger.getAttribute("aria-expanded") !== "true";
+    if (shouldOpen && menuToggle?.getAttribute("aria-expanded") === "true") closeMenu();
+    setLanguageMenuOpen(shouldOpen, shouldOpen ? "current" : "");
+  });
+
+  languageTrigger?.addEventListener("keydown", (event) => {
+    if (!["ArrowDown", "ArrowUp"].includes(event.key)) return;
+    event.preventDefault();
+    setLanguageMenuOpen(true, event.key === "ArrowUp" ? "last" : "first");
+  });
+
+  languageOptions.forEach((option) => {
+    option.addEventListener("click", () => {
+      i18n?.setLanguage?.(option.dataset.languageOption);
+      if (languageStatus) languageStatus.textContent = t("language.changed");
+      closeLanguageMenu();
+      languageTrigger?.focus();
+      closeMenu();
+    });
+  });
+
+  languageControl?.addEventListener("keydown", (event) => {
+    if (event.key === "Tab") {
+      closeLanguageMenu();
+      return;
+    }
+    if (!languageOptions.length || !["ArrowDown", "ArrowUp", "Home", "End"].includes(event.key)) return;
+    if (!languageMenu || languageMenu.hidden) return;
+    event.preventDefault();
+    const activeIndex = Math.max(0, languageOptions.indexOf(document.activeElement));
+    const nextIndex = event.key === "Home"
+      ? 0
+      : event.key === "End"
+        ? languageOptions.length - 1
+        : (activeIndex + (event.key === "ArrowDown" ? 1 : -1) + languageOptions.length) % languageOptions.length;
+    focusLanguageOption(nextIndex);
+  });
+
+  languageControl?.addEventListener("focusout", () => {
+    window.requestAnimationFrame(() => {
+      if (!languageControl.contains(document.activeElement)) closeLanguageMenu();
+    });
+  });
+
+  document.addEventListener("pointerdown", (event) => {
+    if (!languageControl?.contains(event.target)) closeLanguageMenu();
   });
 
   window.addEventListener("salon:languagechange", (event) => {
-    if (languageSelect) languageSelect.value = event.detail?.language || i18n?.language || "de";
+    const activeLanguage = event.detail?.language || i18n?.language || "de";
+    if (languageCurrent) languageCurrent.textContent = activeLanguage.toUpperCase();
+    languageTrigger?.setAttribute("aria-label", `${t("language.label")}: ${languageNames[activeLanguage] || activeLanguage.toUpperCase()}`);
+    languageOptions.forEach((option) => {
+      const active = option.dataset.languageOption === activeLanguage;
+      option.classList.toggle("is-active", active);
+      option.setAttribute("aria-checked", String(active));
+      option.tabIndex = active ? 0 : -1;
+    });
     updateMenuLabel();
     renderExperience();
     renderFormMessages();
     if (lightbox?.open) renderLightbox();
   });
 
-  if (languageSelect) languageSelect.value = i18n?.language || "de";
+  const initialLanguage = i18n?.language || "de";
+  if (languageCurrent) languageCurrent.textContent = initialLanguage.toUpperCase();
+  languageTrigger?.setAttribute("aria-label", `${t("language.label")}: ${languageNames[initialLanguage] || initialLanguage.toUpperCase()}`);
+  languageOptions.forEach((option) => {
+    const active = option.dataset.languageOption === initialLanguage;
+    option.classList.toggle("is-active", active);
+    option.setAttribute("aria-checked", String(active));
+    option.tabIndex = active ? 0 : -1;
+  });
   updateMenuLabel();
   renderExperience();
   setHeroChapter(0);
