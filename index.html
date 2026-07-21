@@ -23,19 +23,42 @@
         <span class="brand-mark" aria-hidden="true">M</span>
         <span class="brand-copy">
           <strong>MAGIC HAIR</strong>
-          <small>By Natali</small>
+          <small>By Natalie</small>
         </span>
       </a>
 
       <div class="header-actions">
-        <label class="language-control">
-          <span class="sr-only" data-i18n="language.label">Sprache auswählen</span>
-          <select id="languageSelect" aria-label="Sprache auswählen" data-i18n-aria="language.label">
-            <option value="de" lang="de">DE</option>
-            <option value="ru" lang="ru">RU</option>
-            <option value="en" lang="en">EN</option>
-          </select>
-        </label>
+        <div class="language-control">
+          <button
+            class="language-trigger"
+            id="languageTrigger"
+            type="button"
+            aria-haspopup="menu"
+            aria-expanded="false"
+            aria-controls="languageMenu"
+            aria-label="Sprache auswählen"
+            data-language-trigger
+            data-i18n-aria="language.label"
+          >
+            <span data-language-current>DE</span>
+            <svg class="language-chevron" viewBox="0 0 16 16" aria-hidden="true">
+              <path d="m4 6 4 4 4-4" />
+            </svg>
+          </button>
+
+          <div class="language-menu" id="languageMenu" role="menu" aria-labelledby="languageTrigger" hidden>
+            <p class="language-menu-label" role="presentation" data-i18n="language.label">Sprache auswählen</p>
+            <button class="language-option is-active" type="button" role="menuitemradio" lang="de" data-language-option="de" aria-checked="true" tabindex="0">
+              <span class="language-indicator" aria-hidden="true"></span><span>Deutsch</span><small>DE</small>
+            </button>
+            <button class="language-option" type="button" role="menuitemradio" lang="ru" data-language-option="ru" aria-checked="false" tabindex="-1">
+              <span class="language-indicator" aria-hidden="true"></span><span>Русский</span><small>RU</small>
+            </button>
+            <button class="language-option" type="button" role="menuitemradio" lang="en" data-language-option="en" aria-checked="false" tabindex="-1">
+              <span class="language-indicator" aria-hidden="true"></span><span>English</span><small>EN</small>
+            </button>
+          </div>
+        </div>
 
         <button
           class="menu-toggle"
@@ -156,7 +179,7 @@
               <div><dt data-i18n="about.promise">Mein Versprechen</dt><dd data-i18n="about.promiseValue">Ehrliche Beratung</dd></div>
             </dl>
 
-            <div class="signature" aria-label="Unterschrift Natali" data-i18n-aria="about.signature">Natali</div>
+            <div class="signature" aria-label="Unterschrift Natalie" data-i18n-aria="about.signature">Natalie</div>
           </div>
         </div>
       </section>
@@ -201,72 +224,7 @@
               <span><b data-i18n="gallery.3.title">Dein Platz</b><small data-i18n="gallery.filterSalon">Unser Salon</small></span>
             </button>
             <button class="gallery-card gallery-card-wide reveal" type="button" data-category="clients" data-image="assets/images/hero-04-cut.webp" data-caption="Präzision in jedem Schnitt" data-i18n-caption="gallery.4.caption" aria-label="Bild vergrößern: Präzision in jedem Schnitt" data-i18n-aria="gallery.4.open">
-              <img src="assets/images/hero-04-cut.webp" alt="Friseurin schneidet sorgfältig schulterlanges Haar" data-i18n-alt="gallery.4.alt" loading="lazy" />
-              <span><b data-i18n="gallery.4.title">Das Handwerk</b><small data-i18n="gallery.filterClients">Unsere Kunden</small></span>
-            </button>
-            <button class="gallery-card gallery-card-tall reveal" type="button" data-category="events" data-image="assets/images/gallery-event.webp" data-caption="Hair-Care-Abend im Salon" data-i18n-caption="gallery.5.caption" aria-label="Bild vergrößern: Hair-Care-Abend im Salon" data-i18n-aria="gallery.5.open">
-              <img src="assets/images/gallery-event.webp" alt="Kleine Gruppe bei einem fiktiven Haarpflege-Event im Salon" data-i18n-alt="gallery.5.alt" loading="lazy" />
-              <span><b data-i18n="gallery.5.title">Salonabend</b><small data-i18n="gallery.filterEvents">Events</small></span>
-            </button>
-            <button class="gallery-card reveal" type="button" data-category="salon" data-image="assets/images/hero-01-entrance.webp" data-caption="Willkommen bei MAGIC HAIR" data-i18n-caption="gallery.6.caption" aria-label="Bild vergrößern: Saloneingang" data-i18n-aria="gallery.6.open">
-              <img src="assets/images/hero-01-entrance.webp" alt="Einladender Eingang des fiktiven Salons" data-i18n-alt="gallery.6.alt" loading="lazy" />
-              <span><b data-i18n="gallery.6.title">Willkommen</b><small data-i18n="gallery.filterSalon">Unser Salon</small></span>
-            </button>
-            <button class="gallery-card gallery-card-wide reveal" type="button" data-category="clients" data-image="assets/images/hero-05-reveal.webp" data-caption="Der fertige Look" data-i18n-caption="gallery.7.caption" aria-label="Bild vergrößern: Der fertige Look" data-i18n-aria="gallery.7.open">
-              <img src="assets/images/hero-05-reveal.webp" alt="Kundin betrachtet ihren fertigen Haarschnitt im Spiegel" data-i18n-alt="gallery.7.alt" loading="lazy" />
-              <span><b data-i18n="gallery.7.title">Der Moment danach</b><small data-i18n="gallery.filterClients">Unsere Kunden</small></span>
-            </button>
-          </div>
-        </div>
-      </section>
-
-      <dialog class="lightbox" id="galleryLightbox" aria-labelledby="lightboxCaption">
-        <button class="lightbox-close" type="button" aria-label="Bildansicht schließen" data-i18n-aria="gallery.lightboxClose">×</button>
-        <button class="lightbox-nav lightbox-prev" type="button" aria-label="Vorheriges Bild" data-i18n-aria="gallery.lightboxPrev">←</button>
-        <figure>
-          <img src="assets/images/hero-01-entrance.webp" alt="Galerievorschau" data-i18n-alt="gallery.previewAlt" />
-          <figcaption id="lightboxCaption"></figcaption>
-        </figure>
-        <button class="lightbox-nav lightbox-next" type="button" aria-label="Nächstes Bild" data-i18n-aria="gallery.lightboxNext">→</button>
-      </dialog>
-
-      <section class="certificates" id="certificates" aria-labelledby="certTitle" data-certificate-section>
-        <div class="certificate-sticky">
-          <div class="certificate-copy">
-            <p class="eyebrow eyebrow-light" data-i18n="cert.eyebrow">Weiterbildung</p>
-            <h2 id="certTitle"><span data-i18n="cert.titleLead">Wissen, das</span><br /> <em data-i18n="cert.titleAccent">in Bewegung bleibt.</em></h2>
-            <p data-i18n="cert.description">Regelmäßige Weiterbildung gehört zu gutem Handwerk. Scrolle, um die fiktiven Beispielzertifikate zu entdecken.</p>
-            <div class="certificate-controls">
-              <button type="button" data-cert-prev aria-label="Vorheriges Zertifikat" data-i18n-aria="cert.prev">←</button>
-              <span><b data-cert-current>01</b> / 06</span>
-              <button type="button" data-cert-next aria-label="Nächstes Zertifikat" data-i18n-aria="cert.next">→</button>
-            </div>
-          </div>
-
-          <div class="certificate-orbit" aria-label="Zertifikatsübersicht" data-i18n-aria="cert.overview">
-            <div class="orbit-line orbit-line-one" aria-hidden="true"></div>
-            <div class="orbit-line orbit-line-two" aria-hidden="true"></div>
-
-            <article class="certificate-card" data-cert="0">
-              <span class="cert-seal" aria-hidden="true">MH</span>
-              <small data-i18n="cert.1.type">Masterclass · 2025</small>
-              <h3 data-i18n="cert.1.title">Creative Color</h3>
-              <p data-i18n="cert.1.description">Moderne Farbtechniken &amp; harmonische Nuancen</p>
-              <b data-i18n="cert.1.level">Advanced</b>
-            </article>
-            <article class="certificate-card" data-cert="1">
-              <span class="cert-seal" aria-hidden="true">MH</span>
-              <small data-i18n="cert.2.type">Academy · 2024</small>
-              <h3 data-i18n="cert.2.title">Precision Cut</h3>
-              <p data-i18n="cert.2.description">Geometrie, Bewegung &amp; tragbare Formen</p>
-              <b data-i18n="cert.2.level">Diploma</b>
-            </article>
-            <article class="certificate-card" data-cert="2">
-              <span class="cert-seal" aria-hidden="true">MH</span>
-              <small data-i18n="cert.3.type">Seminar · 2024</small>
-              <h3 data-i18n="cert.3.title">Scalp &amp; Care</h3>
-              <p data-i18n="cert.3.description">Kopfhautgesundheit &amp; individuelle Pflege</p>
-              <b data-i18n="cert.3.level">Certified</b>
+              <im…1735 tokens truncated…evel">Certified</b>
             </article>
             <article class="certificate-card" data-cert="3">
               <span class="cert-seal" aria-hidden="true">MH</span>
@@ -489,7 +447,7 @@
       <div class="shell footer-top">
         <a class="brand brand-footer" href="#home" aria-label="MAGIC HAIR – nach oben" data-i18n-aria="footer.brandTop">
           <span class="brand-mark" aria-hidden="true">M</span>
-          <span class="brand-copy"><strong>MAGIC HAIR</strong><small>By Natali</small></span>
+          <span class="brand-copy"><strong>MAGIC HAIR</strong><small>By Natalie</small></span>
         </a>
         <p><span data-i18n="footer.taglineLead">Persönliches Handwerk.</span><br /><span data-i18n="footer.taglineAccent">Ruhige Momente. Echtes Du.</span></p>
         <a class="back-to-top" href="#home"><span data-i18n="footer.backTop">Nach oben</span> <span aria-hidden="true">↑</span></a>
